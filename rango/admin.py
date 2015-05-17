@@ -19,14 +19,19 @@ class PollAdmin(admin.ModelAdmin):
     search_fields = ['question']
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+
 class PageAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,                  {'fields': ['category']}),
         ('Title',               {'fields': ['title']}),
         ('URL',                 {'fields': ['url']}),
+        ('Views',               {'fields': ['views']}),
     ]
-    list_display = ('title', 'category', 'url')
+    list_display = ('title', 'category', 'url', 'views')
 
 admin.site.register(Poll, PollAdmin)
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Page, PageAdmin)

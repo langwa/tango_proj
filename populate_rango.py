@@ -1,4 +1,4 @@
-import os
+import os, random
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_proj.settings')
 
@@ -7,6 +7,9 @@ import django
 django.setup()
 
 from rango.models import Category, Page
+
+
+VIEWS_RANGE = 200
 
 
 def populate():
@@ -69,7 +72,29 @@ def add_cat(name, views, likes):
     c.save()
     return c
 
+
+def rand_views():
+    """
+
+    :rtype : None
+    """
+    # random.seed(0)
+    while True:
+        add_views = str(raw_input("Input Random Views? (y/n): "))
+        if add_views.lower() == "y":
+            print "Adding Views... ",
+            for p in Page.objects.all():
+                p.views = random.randrange(VIEWS_RANGE)
+                p.save()
+            print "Done!"
+            break
+        elif add_views.lower() == "n":
+            break
+    return
+
+
 # Start execution here!
 if __name__ == '__main__':
     print "Starting Rango population script..."
     populate()
+    rand_views()
