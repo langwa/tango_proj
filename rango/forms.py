@@ -1,6 +1,7 @@
 from django import forms
 from rango.models import Page, Category
 
+
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128, help_text="Please enter the category name.")
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
@@ -34,7 +35,7 @@ class PageForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = self.cleaned_data
-        url - cleaned_data.get('url')
+        url = cleaned_data.get('url')
 
         # If url is not empty and doesn't start with 'http://', prepend 'http://'.
         if url and not url.startswith('http://'):
