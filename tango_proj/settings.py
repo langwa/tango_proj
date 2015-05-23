@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rango',
     'polls',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,3 +101,12 @@ TEMPLATE_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Resigtration Details
+
+REGISTRATION_OPEN = True        # Users can register
+ACCOUNT_ACTIVATION_DAYS = 1     # One-day activation window
+REGISTRATION_AUTO_LOGIN = True  # User will be automatically logged in.
+LOGIN_REDIRECT_URL = '/rango/'  # The page you want users to arrive at after successful log in
+LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
+                                # and are trying to access pages requiring authentication

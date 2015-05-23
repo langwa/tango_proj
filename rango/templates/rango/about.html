@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'rango/base.html' %}
 
 {% load staticfiles %}
 
@@ -6,8 +6,9 @@
 
 {% block body_block %}
 
-	<h1>Rango says...</h1>
+	<h1>Rango says...you've visited {{ visits }} times!</h1>
 	<p>Here is the about page.</p>
+
     <img src="{% static 'images/full-house.jpg' %}" alt="What a Full House!" width="200px"/>
 
 {% endblock %}

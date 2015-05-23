@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'rango/base.html' %}
 
 {% load staticfiles %}
 
@@ -27,14 +27,14 @@
 
     <h2>Top Viewed Pages</h2>
 
-    {% if top_pages %}
+    {% if pages %}
         <ol>
-            {% for page in top_pages %}
+            {% for page in pages %}
             <li><a href="{{ page.url }}">{{ page.title }}</a></li>
             {% endfor %}
         </ol>
     {% else %}
-        <strong>There are no pages present.</strong>
+        <p><strong>There are no pages present.</strong></p>
     {% endif %}
 
 	<img src="{% static 'images/full-house.jpg' %}" alt="What a Full House!" width="200px" />
